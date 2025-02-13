@@ -1,0 +1,26 @@
+# kibana/config/kibana.yml
+server.name: kibana
+server.host: "0.0.0.0"
+server.port: 5601
+
+# Elasticsearch connection
+elasticsearch.hosts: ["http://elasticsearch:9200"]
+elasticsearch.username: "kibana_system"
+elasticsearch.password: "${KIBANA_SYSTEM_PASSWORD}"
+
+# Monitoring settings
+monitoring.ui.container.elasticsearch.enabled: true
+
+# Security settings
+xpack.security.enabled: true
+xpack.encryptedSavedObjects.encryptionKey: "${ENCRYPTION_KEY}"
+
+# Logging settings
+logging.root.level: info
+logging.appenders.file.type: file
+logging.appenders.file.fileName: /var/log/kibana/kibana.log
+logging.appenders.file.layout.type: json
+
+# Feature settings
+xpack.maps.enabled: false
+xpack.ml.enabled: false
